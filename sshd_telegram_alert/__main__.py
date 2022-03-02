@@ -2,7 +2,7 @@ import logging
 from .parser import parse_args
 from .configurations import configuration
 from .requester import send_message
-from .bcolors import bcolors
+from .colors import bcolors
 
 def main() -> None:
     """Main function where the program start"""
