@@ -7,7 +7,7 @@ from .colors import bcolors
 def main() -> None:
     """Main function where the program start"""
     args = parse_args()
-    logging.info(f"{bcolors.WARNING}Testing")
+    logging.info(f"{bcolors.WARNING}Testing{bcolors.ENDC}")
     # Initzialize logger
     logging.basicConfig(
         format="%(asctime)-5s %(name)-15s %(levelname)-8s %(message)s",

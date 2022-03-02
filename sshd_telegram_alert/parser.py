@@ -20,7 +20,7 @@ def parse_args():
     parser.add_argument(
         "-p",
         "--path",
-        required=True,
+        required=False,
         dest="path",
         help="""Path where you want to store your credentials""",
         type=str,
