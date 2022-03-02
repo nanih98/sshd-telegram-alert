@@ -9,6 +9,7 @@ def validate_dir(dir: str) -> None:
         logging.warning(f"Directory {dir} don't exists")
         create_directory = input(str(f"Do you want to create a new one ({dir}) [yes/no]?: "))
         if create_directory == "yes":
+            logging.info(F"Creating directory {dir}")
             os.mkdir(dir)
         else:
             raise Exception(f"Anwer should be yes or not, can't create the directory {dir}")
