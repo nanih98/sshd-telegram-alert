@@ -2,11 +2,12 @@ import logging
 from .parser import parse_args
 from .configurations import configuration
 from .requester import send_message
+from .bcolors import bcolors
 
 def main() -> None:
     """Main function where the program start"""
     args = parse_args()
-
+    logging.info(f"{bcolors.WARNING}Testing")
     # Initzialize logger
     logging.basicConfig(
         format="%(asctime)-5s %(name)-15s %(levelname)-8s %(message)s",

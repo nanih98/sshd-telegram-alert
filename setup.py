@@ -15,12 +15,12 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name='sshd-telegram-alert',
-    version='0.0.2',
+    version='0.1.0',
     description='Python telegram bot alert when someone login into server via SSH',
     long_description=README,
     long_description_content_type="text/markdown",
     python_requires=">=3.6, <4",
-    url='https://github.com/nanih98/sshd-telegram-alert',
+    url='https://github.com/nanih98/sshd-telegram-alert?ref=develop',
     author='shadowrookie',
     author_email='devopstech253@gmail.com',
     license='MIT',

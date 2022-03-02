@@ -6,7 +6,7 @@ help: ## this help
 
 compile: ## Compile Distribution
 	python3 setup.py sdist
-	python3 setup.py bdist_wheel --universal
+	#python3 setup.py bdist_wheel --universal
 
 deploy: ## Deploy package with twine
 	twine upload dist/*
