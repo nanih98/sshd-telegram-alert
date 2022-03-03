@@ -15,3 +15,9 @@ clean: ## Clean build files
 	rm -rvf build/
 	rm -rvf dist/
 	rm -rvf *.egg-info
+
+local-install: # Install the package locally
+	pip3 install .
+
+local-uninstall: ## Uninstall the package locally
+	pip3 uninstall sshd-telegram-alert

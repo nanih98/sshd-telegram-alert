@@ -1,16 +1,19 @@
-#import logging
-from .parser import parse_args
-from .configurations import configuration
-from .requester import send_message
-from .colors import bcolors
-from .logger import logger
-
+from parser import parse_args()
+from logger import Logger
+from configuration import Configuration
+from requester import Requester
 
 def main() -> None:
     """Main function where the program start"""
     args = parse_args()
-    logger = logger()
-    logger.info(f"{bcolors.WARNING}Testing{bcolors.ENDC}")
+    log = Logger(debug_flag=True)
+    log.success("Starting the program")
+    config = Configuration()
+    requester = Requester()
+
+    config.config_exists(args.path)
+
+
     # # Initzialize logger
     # logging.basicConfig(
     #     format="%(asctime)-5s %(name)-15s %(levelname)-8s %(message)s",
@@ -20,8 +23,6 @@ def main() -> None:
     # )
 
     # Start program
-    configuration(args.path)
-    send_message()
 
 
 if __name__ == "__main__":
