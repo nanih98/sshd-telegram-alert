@@ -21,3 +21,6 @@ local-install: # Install the package locally
 
 local-uninstall: ## Uninstall the package locally
 	pip3 uninstall sshd-telegram-alert
+
+lint: ## Lint python code
+	pylint sshd_telegram_alert

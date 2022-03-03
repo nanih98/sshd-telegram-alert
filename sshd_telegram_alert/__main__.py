@@ -1,4 +1,4 @@
-from parser import parse_args()
+from parser import parse_args
 from logger import Logger
 from configuration import Configuration
 from requester import Requester

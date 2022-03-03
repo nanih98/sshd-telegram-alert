@@ -1,5 +1,5 @@
-import requests
 import os
+import requests
 from dotenv import load_dotenv
 from utils import get_env_path
 from pathlib import Path
