@@ -2,6 +2,7 @@ import os
 import platform
 import subprocess
 from .logger import Logger
+import json
 
 class Utils():
     def __init__(self) -> None:
@@ -32,22 +33,26 @@ class Utils():
     #     except:
     #         raise Exception("Couldn't create the directory")
 
-    def file_exists(self, file: str) -> None:
-        if os.path.isfile(file):
-            self.log.warn(f"File {file} exists.")
-        else:
-            self.log.info(f"File {file} don't exists")
+    # def file_exists(self, file: str) -> None:
+    #     if os.path.isfile(file):
+    #         self.log.warn(f"File {file} exists.")
+    #         rewrite = input(str("Rewrite [y/n]?: "))
+            
+    #     else:
+    #         self.log.info(f"File {file} don't exists.")
     
-    def write_config(self, dir: str, env: str, value: str) -> None:
+    def write_config(self, config) -> None:
         """This functions store credentials inside .env file (CREDENTIALS_DIR variable)"""
-        config_path = dir+"/.env"
-        # Check if file exists
-        self.file_exists(config_path)
-        with open(config_path, "a+") as file:
-            self.log.info(f"Storing variable...")
-            file.writelines(f"{env}={value}" + "\n",)
-            self.log.debug(f"🆗 - Variable {env} stored in {config_path}")
-        #subprocess.call(['chmod', '0700', config])
+        # Serializing json
+        json_object = json.dumps(config, indent=4)
+        path = os.environ['HOME']+"/.sshd-telegram-alert.json"
+        print(path)
+
+        # Writing to sample.json
+        with open(path, "a+") as file:
+            self.log.info(f"Storing json credentials inside {path}")
+            file.writelines(json_object)
+            #subprocess.call(['chmod', '0700', file])
 
     # def dir_exists(self) -> None:
     #     """

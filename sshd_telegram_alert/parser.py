@@ -18,28 +18,36 @@ def parse_args():
         type=str,
     )
     parser.add_argument(
-        "-i",
-        "--interactive",
+        "-c",
+        "--create-config",
         required=False,
-        dest="interactive",
+        dest="create_config",
         action='store_true',
         help="""Interactive registration token and chat_id""",
     )
-    parser.add_argument(
-        "-t",
-        "--telegram-token",
-        required=False,
-        dest="telegram_token",
-        help="""Telegram token to store in .env""",
-        type=str,
-    )
-    parser.add_argument(
-        "-c",
-        "--chat-id",
-        required=False,
-        dest="chat_id",
-        help="""Telegram Chat id to store in .env""",
-        type=str,
-    )
+    # parser.add_argument(
+    #     "-i",
+    #     "--interactive",
+    #     required=False,
+    #     dest="interactive",
+    #     action='store_true',
+    #     help="""Interactive registration token and chat_id""",
+    # )
+    # parser.add_argument(
+    #     "-t",
+    #     "--telegram-token",
+    #     required=False,
+    #     dest="telegram_token",
+    #     help="""Telegram token to store in .env""",
+    #     type=str,
+    # )
+    # parser.add_argument(
+    #     "-c",
+    #     "--chat-id",
+    #     required=False,
+    #     dest="chat_id",
+    #     help="""Telegram Chat id to store in .env""",
+    #     type=str,
+    # )
 
     return parser.parse_args()

@@ -7,8 +7,6 @@ from .configuration import Configuration
 
 def main() -> None:
     """Main function where the program start"""
-    home = os.getenv('HOME')
-
     args = parse_args()
 
     log = Logger(debug_flag=True)
@@ -19,8 +17,7 @@ def main() -> None:
 
     config.check_os()
 
-    config.config(home,args)
-
+    config.create_config(args)
     # # Initzialize logger
     # logging.basicConfig(
     #     format="%(asctime)-5s %(name)-15s %(levelname)-8s %(message)s",
