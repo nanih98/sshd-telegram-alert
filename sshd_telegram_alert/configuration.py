@@ -20,6 +20,12 @@ class Configuration():
         self.log.success(f"OS: {platform.system()}")
         self.log.success(f"USER ID: {os.getuid()}")
     
+    def check_os(self) -> None:
+        if platform.system() != "Linux":
+            raise Exception("This programm only works with linux system")
+        else:
+            self.info()
+    
     def get_config(self, args) -> None:
         args = parse_args()
 
@@ -37,6 +43,6 @@ class Configuration():
             else:
                 raise Exception("Credentials not provided. Consider use -i (interactive) or -c chat_id -t token")
     
-    
+
 
     

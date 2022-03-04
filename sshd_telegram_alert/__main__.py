@@ -11,7 +11,7 @@ def main() -> None:
     log.success("Starting the program")
     config = Configuration()
 
-    config.info()
+    config.check_os()
     config.get_config()
 
     # # Initzialize logger
