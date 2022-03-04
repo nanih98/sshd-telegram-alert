@@ -51,6 +51,6 @@ class Configuration():
                     config_path, "TELEGRAM_TOKEN", args.telegram_token)
                 self.utils.write_config(config_path, "CHAT_ID", args.chat_id)
             else:
-                os.remove(config_path)
+                os.rmdir(config_path)
                 raise Exception(
                     "Credentials not provided. Consider use -i (interactive) or -c chat_id -t token")
