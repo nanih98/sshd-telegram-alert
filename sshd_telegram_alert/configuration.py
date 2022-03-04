@@ -31,7 +31,7 @@ class Configuration():
         config_path = dir+"/sshd-telegram-alert"
 
         try:
-            os.mkdir(dir, mode=0o700)
+            os.mkdir(config_path, mode=0o700)
         except:
             raise Exception("No puedo crear el directorio")
         
