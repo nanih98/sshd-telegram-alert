@@ -41,6 +41,7 @@ class Utils():
     def write_config(self, dir: str, env: str, value: str) -> None:
         """This functions store credentials inside .env file (CREDENTIALS_DIR variable)"""
         directory = dir+"/sshd-telegram-alert"
+        print(directory)
         # Create directory
         try:
             os.mkdir(directory)
