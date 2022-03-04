@@ -30,7 +30,8 @@ class Configuration():
             Set configuration .env file
         """
         config_path = os.path.join(dir, "/sshd-telegram-alert")
-
+        print(config_path)
+        
         try:
             os.mkdir(config_path, mode=0o700)
         except:
@@ -50,6 +51,6 @@ class Configuration():
                     config_path, "TELEGRAM_TOKEN", args.telegram_token)
                 self.utils.write_config(config_path, "CHAT_ID", args.chat_id)
             else:
-                raise Exception(
-                    "Credentials not provided. Consider use -i (interactive) or -c chat_id -t token")
                 os.remove(config_path)
+                raise Exception("Credentials not provided. Consider use -i (interactive) or -c chat_id -t token")
+
