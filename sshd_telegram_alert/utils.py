@@ -49,10 +49,10 @@ class Utils():
         config = directory+"/.env"
         # Check if file exists
         self.file_exists(config)
-        with open(config, "a+") as file:
-            self.log.info(f"Storing variable...")
-            file.writelines(f"{env}={value}" + "\n",)
-            self.log.debug(f"🆗 - Variable {env} stored in {config}")
+        # with open(config, "a+") as file:
+        #     self.log.info(f"Storing variable...")
+        #     file.writelines(f"{env}={value}" + "\n",)
+        #     self.log.debug(f"🆗 - Variable {env} stored in {config}")
         #subprocess.call(['chmod', '0700', config])
 
     # def dir_exists(self) -> None:
