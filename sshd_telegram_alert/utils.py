@@ -46,7 +46,7 @@ class Utils():
         with open(config_path, "a+") as file:
             self.log.info(f"Storing variable...")
             file.writelines(f"{env}={value}" + "\n",)
-            self.log.debug(f"🆗 - Variable {env} stored in {config}")
+            self.log.debug(f"🆗 - Variable {env} stored in {config_path}")
         #subprocess.call(['chmod', '0700', config])
 
     # def dir_exists(self) -> None:
