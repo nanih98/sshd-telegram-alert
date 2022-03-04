@@ -28,7 +28,7 @@ class Configuration():
         """
             Set configuration .env file
         """
-        config_path = dir+"/sshd-telegram-alert"
+        config_path = os.path.join(dir,"/sshd-telegram-alert")
 
         try:
             os.mkdir(config_path, mode=0o700)
@@ -48,7 +48,7 @@ class Configuration():
                 self.utils.write_config(config_path, "CHAT_ID", args.chat_id)
             else:
                 raise Exception("Credentials not provided. Consider use -i (interactive) or -c chat_id -t token")
-    
+                os.remove(config_path)
 
 
     
