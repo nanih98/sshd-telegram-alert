@@ -42,10 +42,8 @@ class Utils():
         """This functions store credentials inside .env file (CREDENTIALS_DIR variable)"""
         directory = dir+"/sshd-telegram-alert"
         # Create directory
-        try:
-            os.mkdir(directory, mode=0o700)
-        except:
-            self.log.error_and_exit(f"Couldn't create the directory {directory}")
+        os.mkdir(directory, mode=0o700)
+        #self.log.error_and_exit(f"Couldn't create the directory {directory}")
 
         config = directory+"/.env"
         # Check if file exists
