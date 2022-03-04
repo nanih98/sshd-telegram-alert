@@ -1,7 +1,8 @@
-from parser import parse_args
-from logger import Logger
-from configuration import Configuration
-from requester import Requester
+from .parser import parse_args
+from .logger import Logger
+from .configuration import Configuration
+#from .requester import Requester
+
 
 def main() -> None:
     """Main function where the program start"""
@@ -9,10 +10,9 @@ def main() -> None:
     log = Logger(debug_flag=True)
     log.success("Starting the program")
     config = Configuration()
-    requester = Requester()
 
-    config.config_exists(args.path)
-
+    config.info()
+    config.get_config()
 
     # # Initzialize logger
     # logging.basicConfig(

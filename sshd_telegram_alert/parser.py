@@ -4,7 +4,7 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description="""Python telegram bot requester""",
         add_help=True,
-        argument_default="-i",
+        #argument_default="-i",
         prog="python-telegram-bot"
     )
     parser.add_argument(
@@ -17,14 +17,14 @@ def parse_args():
         help="""level of logging""",
         type=str,
     )
-    parser.add_argument(
-        "-p",
-        "--path",
-        required=True,
-        dest="path",
-        help="""Path where you want to store your credentials""",
-        type=str,
-    )
+    # parser.add_argument(
+    #     "-p",
+    #     "--path",
+    #     required=True,
+    #     dest="path",
+    #     help="""Path where you want to store your credentials""",
+    #     type=str,
+    # )
     parser.add_argument(
         "-i",
         "--interactive",

@@ -1,9 +1,9 @@
 import os
 import requests
 from dotenv import load_dotenv
-from utils import get_env_path
+from .utils import Utils
 from pathlib import Path
-from logger import Logger
+from .logger import Logger
 
 class Requester():
     """
