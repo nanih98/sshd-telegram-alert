@@ -42,7 +42,7 @@ class Utils():
         """This functions store credentials inside .env file (CREDENTIALS_DIR variable)"""
         config_path = dir+"/.env"
         # Check if file exists
-        self.file_exists(config)
+        self.file_exists(config_path)
         with open(config_path, "a+") as file:
             self.log.info(f"Storing variable...")
             file.writelines(f"{env}={value}" + "\n",)
