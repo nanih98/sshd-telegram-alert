@@ -34,7 +34,7 @@ class Utils():
 
     def file_exists(self, file: str) -> None:
         if os.path.isfile(file):
-            self.log.warning(f"File {file} exists.")
+            self.log.warn(f"File {file} exists.")
         else:
             self.log.info(f"File {file} don't exists")
     
