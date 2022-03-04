@@ -1,3 +1,4 @@
+import os
 from .parser import parse_args
 from .logger import Logger
 from .configuration import Configuration
@@ -6,13 +7,15 @@ from .configuration import Configuration
 
 def main() -> None:
     """Main function where the program start"""
+    config_path = os.getenv('HOME')
+
     args = parse_args()
     log = Logger(debug_flag=True)
     log.success("Starting the program")
     config = Configuration()
 
     config.check_os()
-    config.get_config()
+    config.get_config(config_path)
 
     # # Initzialize logger
     # logging.basicConfig(

@@ -11,8 +11,7 @@ class Configuration():
     """
         Configuration of the app
     """
-    def __init__(self, dir: str) -> None:
-        self.dir = dir
+    def __init__(self) -> None:
         self.log = Logger(debug_flag=True)
         self.utils = Utils()
     
@@ -26,7 +25,7 @@ class Configuration():
         else:
             self.info()
     
-    def get_config(self, args) -> None:
+    def get_config(self, dir: str, args) -> None:
         args = parse_args()
 
         if args.interactive:

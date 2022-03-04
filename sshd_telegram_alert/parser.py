@@ -17,24 +17,13 @@ def parse_args():
         help="""level of logging""",
         type=str,
     )
-    # parser.add_argument(
-    #     "-p",
-    #     "--path",
-    #     required=True,
-    #     dest="path",
-    #     help="""Path where you want to store your credentials""",
-    #     type=str,
-    # )
     parser.add_argument(
         "-i",
         "--interactive",
-        #choices=["INFO", "WARNING", "ERROR", "CRITICAL", "DEBUG"],
         required=False,
         dest="interactive",
-        #default=False,
         action='store_true',
         help="""Interactive registration token and chat_id""",
-        #type=bool,
     )
     parser.add_argument(
         "-t",

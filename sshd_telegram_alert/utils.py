@@ -39,9 +39,9 @@ class Utils():
         else:
             self.log.info(f"File {file} don't exists")
     
-    def write_config(self, env: str, value: str) -> None:
+    def write_config(self, dir: str, env: str, value: str) -> None:
         """This functions store credentials inside .env file (CREDENTIALS_DIR variable)"""
-        directory = os.getenv('HOME')+"sshd-telegram-alert"
+        directory = dir+"/sshd-telegram-alert"
         # Create directory
         try:
             os.mkdir(directory)
