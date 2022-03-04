@@ -10,12 +10,16 @@ def main() -> None:
     config_path = os.getenv('HOME')
 
     args = parse_args()
+
     log = Logger(debug_flag=True)
+
     log.success("Starting the program")
+
     config = Configuration()
 
     config.check_os()
-    config.get_config(config_path)
+
+    config.get_config(config_path,args)
 
     # # Initzialize logger
     # logging.basicConfig(

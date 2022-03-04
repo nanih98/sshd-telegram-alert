@@ -3,7 +3,6 @@ import platform
 import getpass
 import subprocess
 from .logger import Logger
-from .parser import parse_args
 from .utils import Utils
 
 
@@ -26,8 +25,9 @@ class Configuration():
             self.info()
     
     def get_config(self, dir: str, args) -> None:
-        args = parse_args()
-
+        """
+            Set configuration .env file
+        """
         if args.interactive:
             self.log.info("Mode interactive")
             telegram_token = getpass.getpass("Introduce your telegram token: ")
