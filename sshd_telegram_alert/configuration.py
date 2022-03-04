@@ -24,21 +24,28 @@ class Configuration():
         else:
             self.info()
     
-    def get_config(self, dir: str, args) -> None:
+    def config(self, dir: str, args) -> None:
         """
             Set configuration .env file
         """
+        config_path = dir+"/sshd-telegram-alert"
+
+        try:
+            os.mkdir(dir, mode=0o700)
+        except:
+            raise Exception("No puedo crear el directorio")
+        
         if args.interactive:
             self.log.info("Mode interactive")
             telegram_token = getpass.getpass("Introduce your telegram token: ")
-            self.utils.write_config(dir, "TELEGRAM_TOKEN", telegram_token)
+            self.utils.write_config(config_path, "TELEGRAM_TOKEN", telegram_token)
             chat_id = getpass.getpass("Introduce your chat id: ")
-            self.utils.write_config(dir, "CHAT_ID", chat_id)
+            self.utils.write_config(config_path, "CHAT_ID", chat_id)
         else:
             if args.telegram_token and args.chat_id:
                 self.log.info("Mode non-interactive")
-                self.utils.write_config(dir, "TELEGRAM_TOKEN", args.telegram_token)
-                self.utils.write_config(dir, "CHAT_ID", args.chat_id)
+                self.utils.write_config(config_path, "TELEGRAM_TOKEN", args.telegram_token)
+                self.utils.write_config(config_path, "CHAT_ID", args.chat_id)
             else:
                 raise Exception("Credentials not provided. Consider use -i (interactive) or -c chat_id -t token")
     

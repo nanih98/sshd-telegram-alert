@@ -40,19 +40,13 @@ class Utils():
     
     def write_config(self, dir: str, env: str, value: str) -> None:
         """This functions store credentials inside .env file (CREDENTIALS_DIR variable)"""
-        directory = dir+"/sshd-telegram-alert"
-        self.log.info(directory)
-        # Create directory
-        os.mkdir(directory, mode=0o700)
-        #self.log.error_and_exit(f"Couldn't create the directory {directory}")
-
-        config = directory+"/.env"
+        config_path = dir+"/.env"
         # Check if file exists
         self.file_exists(config)
-        # with open(config, "a+") as file:
-        #     self.log.info(f"Storing variable...")
-        #     file.writelines(f"{env}={value}" + "\n",)
-        #     self.log.debug(f"🆗 - Variable {env} stored in {config}")
+        with open(config_path, "a+") as file:
+            self.log.info(f"Storing variable...")
+            file.writelines(f"{env}={value}" + "\n",)
+            self.log.debug(f"🆗 - Variable {env} stored in {config}")
         #subprocess.call(['chmod', '0700', config])
 
     # def dir_exists(self) -> None:

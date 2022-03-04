@@ -7,7 +7,7 @@ from .configuration import Configuration
 
 def main() -> None:
     """Main function where the program start"""
-    config_path = os.getenv('HOME')
+    home = os.getenv('HOME')
 
     args = parse_args()
 
@@ -19,7 +19,7 @@ def main() -> None:
 
     config.check_os()
 
-    config.get_config(config_path,args)
+    config.config(home,args)
 
     # # Initzialize logger
     # logging.basicConfig(
