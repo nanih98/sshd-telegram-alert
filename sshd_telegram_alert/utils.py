@@ -4,8 +4,7 @@ import subprocess
 from .logger import Logger
 
 class Utils():
-    def __init__(self, dir: str) -> None:
-        self.dir = dir
+    def __init__(self) -> None:
         self.log = Logger(debug_flag=True)
 
     # def convert_path(self):
