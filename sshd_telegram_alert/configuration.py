@@ -20,7 +20,8 @@ class Configuration():
 
     def check_os(self) -> None:
         if platform.system() != "Linux":
-            raise Exception("This program by the moment only works with linux system")
+            self.log.error_and_exit(
+                "This program by the moment only works with linux system")
         else:
             self.info()
     
