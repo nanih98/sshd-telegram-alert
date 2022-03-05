@@ -20,7 +20,7 @@ def main() -> None:
     config.create_config(args,config_path)
 
     # Send message
-    message = f"Host: {platform.node()}: {os.environ.get('PAM_USER')}@{os.environ.get('PAM_RHOST')}"
+    message = f"Host: {platform.node()}: {os.environ.get('PAM_USER')}@{os.environ.get('PAM_RHOST')}: "
     if args.message:
         message += args.message
     requester = Requester()
