@@ -22,7 +22,7 @@ def main() -> None:
     log.success("Starting the program")
 
     config = Configuration()
-    config.check_os()
+    #config.check_os()
     config.create_config(args,config_path, platform.system())
 
     # Send message
