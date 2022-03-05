@@ -5,7 +5,7 @@ def parse_args():
         description="""Python telegram bot requester""",
         add_help=True,
         #argument_default="-i",
-        prog="python-telegram-bot"
+        prog="sshd-telgram-alert"
     )
     parser.add_argument(
         "-l",

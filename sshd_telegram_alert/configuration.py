@@ -36,7 +36,8 @@ class Configuration():
         """
             Set configuration .env file
         """
-        if args.create_config and self.check_uid():
+        self.check_uid()
+        if args.create_config:
             self.log.success("Interactive credentials creator :)")
             telegram_token = getpass.getpass("Introduce your telegram token: ")
             chat_id = getpass.getpass("Introduce your chat id: ")
