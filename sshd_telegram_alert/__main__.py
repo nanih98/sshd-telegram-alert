@@ -21,7 +21,6 @@ def main() -> None:
 
     # Send message
     message = f"{os.environ.get('PAM_USER')}@{os.environ.get('PAM_RHOST')}: {os.environ.get('PAM_SERVICE')}: {os.system('uname -a')}"
-    print(type(message))
     requester = Requester()
     requester.send_message(config_path, message)
 
