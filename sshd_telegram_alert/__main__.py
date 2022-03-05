@@ -7,10 +7,9 @@ import platform
 
 def check_os_path():
     if platform.system() != "Linux":
-        config_path = os.path.join(os.environ.get('HOME', ".sshd-telegram-credentials.json"))
-        return config_path
+        return os.path.join(os.environ.get('HOME', ".sshd-telegram-credentials.json"))
     else:
-        config_path = "/etc/ssh/.sshd-telegram-credentials.json"
+        return "/etc/ssh/.sshd-telegram-credentials.json"
 
 def main() -> None:
     """Main function where the program start"""
@@ -26,11 +25,18 @@ def main() -> None:
     config.create_config(args,config_path, platform.system())
 
     # Send message
-    message = f"{platform.node()}:{os.environ.get('PAM_USER')}@{os.environ.get('PAM_RHOST')}: "
-    if args.message:
-        message += args.message
+    if args.sshd_pam_detection:
+        message = f"{platform.node()}:{os.environ.get('PAM_USER')}@{os.environ.get('PAM_RHOST')}: "
+        if args.message:
+            message += args.message
+    elif args.message: 
+        message = args.message
+    else:
+       log.error_and_exit("Message don't provided. Consider use -m flag")
+ 
     requester = Requester()
-    requester.requester(config_path, message, args, platform.system())
+    requester.requester(args, config_path,message)
+    #requester.requester(config_path, message, args, platform.system())
 
     # # Initzialize logger
     # logging.basicConfig(

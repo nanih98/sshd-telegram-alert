@@ -2,7 +2,7 @@ import os
 import requests
 from .utils import Utils
 from .logger import Logger
-
+import platform
 
 class Requester():
     """
@@ -30,15 +30,18 @@ class Requester():
         else:
             self.log.error("Error sending message")
     
-    def requester(self, config_path, message, args, os) -> None:
+    def requester(self,args,config_path,message):
         """
             Send message depend of the case (PAM enabled or not)
         """
-        if args.sshd_pam_detection and os.environ.get('PAM_TYPE') == "open_session" and os == "Linux":
-            self.log.info("PAM enabled (Linux system)")
-            self.send_message(config_path,message)
+        if args.sshd_pam_detection and platform.system() != "Linux":
+            self.log.error_and_exit("Pam flag enabled but this is not a Linux system. Skipping")
+        elif "PAM_TYPE" in os.environ:            
+            if os.environ.get('PAM_TYPE') == "open_session":
+                self.log.info("PAM enabled (Linux system) and PAM_TYPE = open_session")
+                self.send_message(config_path, message)
         else:
-            self.log.info("PAM don't enabled, this system is not Linux, sending normal message")
+            self.log.info("PAM don't enabled")
             self.send_message(config_path,message)
         
 
