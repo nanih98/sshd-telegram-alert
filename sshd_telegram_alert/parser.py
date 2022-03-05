@@ -24,5 +24,13 @@ def parse_args():
         action='store_true',
         help="""Interactive registration token and chat_id""",
     )
+    parser.add_argument(
+        "-m",
+        "--message",
+        required=False,
+        dest="message",
+        help="""Custom message you want to send to telegram bot chat""",
+        type=str,
+    )
 
     return parser.parse_args()

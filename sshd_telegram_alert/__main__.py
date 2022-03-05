@@ -20,9 +20,11 @@ def main() -> None:
     config.create_config(args,config_path)
 
     # Send message
-    message = f"{os.environ.get('PAM_USER')}@{os.environ.get('PAM_RHOST')}: {os.environ.get('PAM_SERVICE')} --> {platform.node()}"
+    message = f"Host: {platform.node()}: {os.environ.get('PAM_USER')}@{os.environ.get('PAM_RHOST')}"
+    if args.message:
+        message += args.message
     requester = Requester()
-    requester.send_message(config_path, message)
+    requester.send_message(config_path,message)
 
     # # Initzialize logger
     # logging.basicConfig(
