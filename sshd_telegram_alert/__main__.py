@@ -3,6 +3,7 @@ from .parser import parse_args
 from .logger import Logger
 from .configuration import Configuration
 from .requester import Requester
+import platform
 
 
 def main() -> None:
@@ -19,7 +20,7 @@ def main() -> None:
     config.create_config(args,config_path)
 
     # Send message
-    message = f"{os.environ.get('PAM_USER')}@{os.environ.get('PAM_RHOST')}: {os.environ.get('PAM_SERVICE')} --> {os.getenv('HOSTNAME')}"
+    message = f"{os.environ.get('PAM_USER')}@{os.environ.get('PAM_RHOST')}: {os.environ.get('PAM_SERVICE')} --> {platform.node()}"
     requester = Requester()
     requester.send_message(config_path, message)
 
