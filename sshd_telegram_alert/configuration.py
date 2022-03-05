@@ -37,8 +37,6 @@ class Configuration():
                 "CHAT_ID": chat_id
             }
             self.utils.write_config(config,config_path)
-        else:
-            raise Exception("Credentials file not provided, Consier use -c create-config")
         
         
 
