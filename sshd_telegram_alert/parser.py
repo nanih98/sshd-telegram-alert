@@ -32,5 +32,13 @@ def parse_args():
         help="""Custom message you want to send to telegram bot chat""",
         type=str,
     )
+    parser.add_argument(
+        "-p",
+        "--pam-detection",
+        required=False,
+        dest="pam_detection",
+        action='store_true',
+        help="""Enable PAM feature when you are using this script to monitor ssh connections""",
+    )
 
     return parser.parse_args()

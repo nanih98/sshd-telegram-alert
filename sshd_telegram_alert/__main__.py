@@ -24,7 +24,7 @@ def main() -> None:
     if args.message:
         message += args.message
     requester = Requester()
-    requester.send_message(config_path,message)
+    requester.requester(config_path,message,args)
 
     # # Initzialize logger
     # logging.basicConfig(
