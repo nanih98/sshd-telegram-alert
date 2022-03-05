@@ -22,3 +22,8 @@ sshd-telegram-alert > /tmp/sshd.log
 $ chown root:root /etc/ssh/login_notification.sh 
 $ chmod 700 /etc/ssh/login_notification.sh
 ```
+
+vim /etc/pam.d/sshd
+
+# Login Telegram Notification
+# session optional pam_exec.so /etc/ssh/login_notify.sh

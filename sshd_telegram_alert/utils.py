@@ -61,6 +61,13 @@ class Utils():
             credentials = json.load(file)
             return credentials
 
+    def modify_pam(self):
+        """
+            Modify linux /etc/pam.d/sshd
+        """
+        with open('/etc/pam.d/sshd',"a+") as file:
+            file.writelines("#Login Telegram Notification")
+            file.writelines("session optional pam_exec.so /etc/ssh/login_notify.sh")
 
     # def dir_exists(self) -> None:
     #     """

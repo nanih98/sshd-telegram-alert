@@ -22,11 +22,7 @@ class Requester():
         pam_type = os.environ.get('PAM_TYPE')
         pam_user = os.environ.get('PAM_USER')
         pam_rhost = os.environ.get('PAM_RHOST')
-        print(pam_type)
-        print(pam_user)
-        print(pam_rhost)
-
-        
+                
         if pam_type == "open_session":
             return True
 
