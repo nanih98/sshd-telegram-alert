@@ -33,12 +33,12 @@ def parse_args():
         type=str,
     )
     parser.add_argument(
-        "-p",
-        "--pam-detection",
+        "-sp",
+        "--sshd-pam-detection",
         required=False,
-        dest="pam_detection",
+        dest="sshd_pam_detection",
         action='store_true',
-        help="""Enable PAM feature when you are using this script to monitor ssh connections""",
+        help="""Enable PAM feature when you are using this script to monitor ssh connections. (Only for linux system)""",
     )
 
     return parser.parse_args()

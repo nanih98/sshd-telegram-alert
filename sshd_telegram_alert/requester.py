@@ -30,13 +30,15 @@ class Requester():
         else:
             self.log.error("Error sending message")
     
-    def requester(self, config_path, message, args) -> None:
+    def requester(self, config_path, message, args, os) -> None:
         """
             Send message depend of the case (PAM enabled or not)
         """
-        if args.pam_detection and os.environ.get('PAM_TYPE') == "open_session":
+        if args.sshd_pam_detection and os.environ.get('PAM_TYPE') == "open_session" and os == "Linux":
+            self.log.info("PAM enabled (Linux system)")
             self.send_message(config_path,message)
         else:
+            self.log.info("PAM don't enabled, this system is not Linux, sending normal message")
             self.send_message(config_path,message)
         
 
