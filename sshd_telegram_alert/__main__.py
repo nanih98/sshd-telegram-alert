@@ -19,8 +19,7 @@ def main() -> None:
     config.create_config(args,config_path)
 
     # Send message
-    server = os.system('hostname')
-    message = f"{os.environ.get('PAM_USER')}@{os.environ.get('PAM_RHOST')}: {os.environ.get('PAM_SERVICE')} --> {server}"
+    message = f"{os.environ.get('PAM_USER')}@{os.environ.get('PAM_RHOST')}: {os.environ.get('PAM_SERVICE')} --> {os.getenv('HOSTNAME')}"
     requester = Requester()
     requester.send_message(config_path, message)
 
