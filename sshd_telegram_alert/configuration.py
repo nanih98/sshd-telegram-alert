@@ -23,12 +23,19 @@ class Configuration():
             raise Exception("This program by the moment only works with linux system")
         else:
             self.info()
+    
+    def check_uid(self) -> None:
+        """
+            You must be root to set credentials
+        """
+        if os.getuid() != 0:
+            self.log.error_and_exit("You must be root to store your credentials")
 
     def create_config(self, args, config_path) -> None:
         """
             Set configuration .env file
         """
-        if args.create_config:
+        if args.create_config and self.check_uid():
             self.log.success("Interactive credentials creator :)")
             telegram_token = getpass.getpass("Introduce your telegram token: ")
             chat_id = getpass.getpass("Introduce your chat id: ")

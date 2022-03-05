@@ -8,3 +8,17 @@ Alerts to telegram group (with a bot), when someone logs in to a server via ssh
 ....  
 ....  
 ....  
+
+# Create executable
+
+/etc/ssh/login_notification.sh
+```
+#!/usr/bin/env bash
+
+sshd-telegram-alert > /tmp/sshd.log
+```
+
+```
+$ chown root:root /etc/ssh/login_notification.sh 
+$ chmod 700 /etc/ssh/login_notification.sh
+```
