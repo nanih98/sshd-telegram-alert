@@ -17,7 +17,9 @@ class Requester():
         """
             Send mesage to telegram API using requests package
         """
+        print("send message")
         if os.environ.get('PAM_TYPE') == "open_session":
+            self.log.info("Sending message to telegram bot")
             credentials = self.utils.read_config(config_path)
             telegram_token = credentials["TELEGRAM_TOKEN"]
             chat_id = credentials["CHAT_ID"]
