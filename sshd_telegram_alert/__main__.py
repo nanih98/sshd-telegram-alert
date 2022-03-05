@@ -1,3 +1,4 @@
+import os
 from .parser import parse_args
 from .logger import Logger
 from .configuration import Configuration
@@ -6,9 +7,10 @@ from .requester import Requester
 
 def main() -> None:
     """Main function where the program start"""
+
     args = parse_args()
     config_path = "/etc/ssh/.sshd-telegram-credentials.json"
-    print(config_path)
+
     log = Logger(debug_flag=True)
     log.success("Starting the program")
 
@@ -16,8 +18,10 @@ def main() -> None:
     config.check_os()
     config.create_config(args,config_path)
 
+    # Send message
+    message = f"{os.environ.get('PAM_USER')}@{os.environ.get('PAM_RHOST')}: {os.environ.get('PAM_SERVICE'): {os.system('uname -a')}}"
     requester = Requester()
-    requester.send_message(config_path)
+    requester.send_message(config_path, message)
 
     # # Initzialize logger
     # logging.basicConfig(

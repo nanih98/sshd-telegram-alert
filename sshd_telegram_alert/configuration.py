@@ -46,8 +46,3 @@ class Configuration():
                 "CHAT_ID": chat_id
             }
             self.utils.write_config(config,config_path)
-            #self.utils.modify_pam()
-            self.utils.clean_pam_file()
-        
-        
-

@@ -24,7 +24,7 @@ setup(
     author='shadowrookie',
     author_email='devopstech253@gmail.com',
     license='MIT',
-    install_requires=['requests==2.27.1','python-dotenv==0.19.2'],
+    install_requires=['requests==2.27.1'],
     packages=find_packages(include=['sshd_telegram_alert']),
     include_package_data=True,
     entry_points={'console_scripts': ['sshd-telegram-alert=sshd_telegram_alert.__main__:main']},
