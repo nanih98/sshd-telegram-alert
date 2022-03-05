@@ -24,7 +24,7 @@ class Configuration():
         else:
             self.info()
 
-    def create_config(self, args, config_path: str) -> None:
+    def create_config(self, args, config_path) -> None:
         """
             Set configuration .env file
         """

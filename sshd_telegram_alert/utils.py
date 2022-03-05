@@ -41,7 +41,7 @@ class Utils():
     #     else:
     #         self.log.info(f"File {file} don't exists.")
     
-    def write_config(self, config: dict, config_path: str) -> None:
+    def write_config(self, config, config_path) -> None:
         """This functions store credentials inside .env file (CREDENTIALS_DIR variable)"""
         # Serializing json
         json_object = json.dumps(config, indent=4)
