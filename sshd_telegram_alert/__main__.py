@@ -8,7 +8,7 @@ from .requester import Requester
 def main() -> None:
     """Main function where the program start"""
     args = parse_args()
-    config_path = str(os.environ.get('HOME')+"/.sshd-telegram-alert.json")
+    config_path = os.path.join(os.environ.get('HOME'), ".sshd-telegram-credentials.json")
     print(config_path)
     log = Logger(debug_flag=True)
     log.success("Starting the program")
