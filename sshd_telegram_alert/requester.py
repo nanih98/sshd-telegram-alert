@@ -35,12 +35,11 @@ class Requester():
         chat_id = credentials["CHAT_ID"]
         base_url = f"https://api.telegram.org/bot{telegram_token}/sendMessage"
 
-        if self.open_session():
-            data = {'chat_id': chat_id, 'text': 'Testing'}
-            r = requests.post(url=base_url, data=data)
-            print(r.text)
+        data = {'chat_id': chat_id, 'text': 'Testing'}
+        r = requests.post(url=base_url, data=data)
+        print(r.text)
 
-            if r.status_code == 200:
-                self.log.info("Message sended")
-            else:
-                self.log.error("Error sending message")
+        if r.status_code == 200:
+            self.log.info("Message sended")
+        else:
+            self.log.error("Error sending message")
