@@ -18,12 +18,12 @@ class Configuration():
         self.log.success(f"OS: {platform.system()}")
         self.log.success(f"USER ID: {os.getuid()}")
 
-    def check_os(self) -> None:
-        if platform.system() != "Linux":
-            self.log.error_and_exit(
-                "This program by the moment only works with linux system")
-        else:
-            self.info()
+    # def check_os(self) -> None:
+    #     if platform.system() != "Linux":
+    #         self.log.error_and_exit(
+    #             "This program by the moment only works with linux system")
+    #     else:
+    #         self.info()
     
     def check_uid(self) -> None:
         """
@@ -32,11 +32,13 @@ class Configuration():
         if os.getuid() != 0:
             self.log.error_and_exit("You must be root to store your credentials")
 
-    def create_config(self, args, config_path) -> None:
+    def create_config(self, args, config_path, os) -> None:
         """
             Set configuration .env file
         """
-        self.check_uid()
+        if os == "Linux":
+            self.check_uid()
+   
         if args.create_config:
             self.log.success("Interactive credentials creator :)")
             telegram_token = getpass.getpass("Introduce your telegram token: ")

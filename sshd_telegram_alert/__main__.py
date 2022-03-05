@@ -23,7 +23,7 @@ def main() -> None:
 
     config = Configuration()
     config.check_os()
-    config.create_config(args,config_path)
+    config.create_config(args,config_path, platform.system())
 
     # Send message
     message = f"{platform.node()}:{os.environ.get('PAM_USER')}@{os.environ.get('PAM_RHOST')}: "
