@@ -35,6 +35,9 @@ class Requester():
         chat_id = credentials["CHAT_ID"]
         base_url = f"https://api.telegram.org/bot{telegram_token}/sendMessage"
 
+        print(os.environ.get('PAM_USER'))
+        print(os.environ.get('PAM_RHOST'))
+
         data = {'chat_id': chat_id, 'text': 'Testing'}
         r = requests.post(url=base_url, data=data)
         print(r.text)
