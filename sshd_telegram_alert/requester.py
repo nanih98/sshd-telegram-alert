@@ -13,7 +13,7 @@ class Requester():
         self.log = Logger(debug_flag=True)
         self.utils = Utils()
 
-    def send_message(self, config_path, message) -> None:
+    def send_message(self, config_path: str, message: str) -> None:
         """
             Send mesage to telegram API using requests package
         """
