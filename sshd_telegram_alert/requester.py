@@ -1,8 +1,6 @@
 import os
 import requests
-from dotenv import load_dotenv
 from .utils import Utils
-from pathlib import Path
 from .logger import Logger
 
 
