@@ -20,16 +20,14 @@ class Configuration():
 
     def check_os(self) -> None:
         if platform.system() != "Linux":
-            raise Exception("This programm only works with linux system")
+            raise Exception("This program by the moment only works with linux system")
         else:
             self.info()
 
-    def create_config(self, args) -> None:
+    def create_config(self, args, config_path: str) -> None:
         """
             Set configuration .env file
         """
-        config_path = os.path.join(os.environ.get('HOME'), "/.sshd-telegram-alert")
-
         if args.create_config:
             self.log.success("Interactive credentials creator :)")
             telegram_token = getpass.getpass("Introduce your telegram token: ")
@@ -38,7 +36,9 @@ class Configuration():
                 "TELEGRAM_TOKEN": telegram_token,
                 "CHAT_ID": chat_id
             }
-            self.utils.write_config(config)
+            self.utils.write_config(config,config_path)
+        else:
+            raise Exception("Credentials file not provided, Consier use -c create-config")
         
         
 

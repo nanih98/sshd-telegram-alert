@@ -41,18 +41,26 @@ class Utils():
     #     else:
     #         self.log.info(f"File {file} don't exists.")
     
-    def write_config(self, config) -> None:
+    def write_config(self, config: dict, config_path: str) -> None:
         """This functions store credentials inside .env file (CREDENTIALS_DIR variable)"""
         # Serializing json
         json_object = json.dumps(config, indent=4)
-        path = os.environ['HOME']+"/.sshd-telegram-alert.json"
-        print(path)
 
         # Writing to sample.json
-        with open(path, "a+") as file:
-            self.log.info(f"Storing json credentials inside {path}")
+        with open(config_path, "w") as file:
+            self.log.info(f"Storing json credentials inside {config_path}")
             file.writelines(json_object)
-            #subprocess.call(['chmod', '0700', file])
+            subprocess.call(['chmod', '0700', config_path])
+    
+    def read_config(self, config_path):
+        """
+            Read file and return json object
+        """
+        with open(config_path, "r") as file:
+            self.log.info(f"Loading credentials from {config_path}")
+            credentials = json.load(file)
+            return credentials
+
 
     # def dir_exists(self) -> None:
     #     """

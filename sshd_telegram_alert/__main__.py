@@ -2,22 +2,24 @@ import os
 from .parser import parse_args
 from .logger import Logger
 from .configuration import Configuration
-#from .requester import Requester
+from .requester import Requester
 
 
 def main() -> None:
     """Main function where the program start"""
     args = parse_args()
-
+    config_path = os.environ.get('HOME')+"/.sshd-telegram-alert"
+    print(config_path)
     log = Logger(debug_flag=True)
-
     log.success("Starting the program")
 
     config = Configuration()
-
     config.check_os()
+    config.create_config(args,config_path)
 
-    config.create_config(args)
+    requester = Requester()
+    requester.send_message(config_path)
+
     # # Initzialize logger
     # logging.basicConfig(
     #     format="%(asctime)-5s %(name)-15s %(levelname)-8s %(message)s",
