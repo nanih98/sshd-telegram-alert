@@ -33,13 +33,9 @@ class Utils():
     #     except:
     #         raise Exception("Couldn't create the directory")
 
-    # def file_exists(self, file: str) -> None:
-    #     if os.path.isfile(file):
-    #         self.log.warn(f"File {file} exists.")
-    #         rewrite = input(str("Rewrite [y/n]?: "))
-            
-    #     else:
-    #         self.log.info(f"File {file} don't exists.")
+    def file_exists(self, file: str) -> None:
+        if not os.path.isfile(file):
+            self.log.error_and_exit(f"File {file} not found. Consider using -c flag to create new config file")
     
     def write_config(self, config, config_path) -> None:
         """This functions store credentials inside .env file (CREDENTIALS_DIR variable)"""
@@ -56,6 +52,7 @@ class Utils():
         """
             Read file and return json object
         """
+        self.file_exists(config_path)
         with open(config_path, "r") as file:
             self.log.info(f"Loading credentials from {config_path}")
             credentials = json.load(file)

@@ -48,3 +48,17 @@ class Configuration():
                 "CHAT_ID": chat_id
             }
             self.utils.write_config(config,config_path)
+    
+    def message(self, args) -> None:
+        """
+            Message type
+        """
+        if args.message:
+            if args.sshd_pam_detection:
+                pam_message = f"{platform.node()}:{os.environ.get('PAM_USER')}@{os.environ.get('PAM_RHOST')}: "
+                message = pam_message + args.message
+                return message
+            else:
+                return args.message
+        else:
+            self.log.error_and_exit("Message don't provided. Consider use -m flag")

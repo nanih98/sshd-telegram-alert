@@ -17,7 +17,7 @@ class Requester():
         """
             Send mesage to telegram API using requests package
         """        
-        self.log.info("Sending message to telegram bot")
+        self.log.info("Trying to send message to telegram bot")
         credentials = self.utils.read_config(config_path)
         telegram_token = credentials["TELEGRAM_TOKEN"]
         chat_id = credentials["CHAT_ID"]
@@ -43,6 +43,3 @@ class Requester():
         else:
             self.log.info("PAM don't enabled")
             self.send_message(config_path,message)
-        
-
-

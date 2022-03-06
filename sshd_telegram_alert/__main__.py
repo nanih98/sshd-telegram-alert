@@ -24,15 +24,7 @@ def main() -> None:
     #config.check_os()
     config.create_config(args,config_path, platform.system())
 
-    # Send message
-    if args.sshd_pam_detection:
-        message = f"{platform.node()}:{os.environ.get('PAM_USER')}@{os.environ.get('PAM_RHOST')}: "
-        if args.message:
-            message += args.message
-    elif args.message: 
-        message = args.message
-    else:
-       log.error_and_exit("Message don't provided. Consider use -m flag")
+    message = config.message(args)
  
     requester = Requester()
     requester.requester(args, config_path,message)
