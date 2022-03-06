@@ -5,11 +5,15 @@ from .configuration import Configuration
 from .requester import Requester
 import platform
 
+
 def check_os_path():
-    if platform.system() != "Linux":
-        return os.path.join(os.environ.get('HOME', ".sshd-telegram-credentials.json"))
+    if platform.system() == "Darwin":
+        print(os.path.join(os.environ.get('HOME'),
+              ".sshd-telegram-credentials.json"))
+        return os.path.join(os.environ.get('HOME'), ".sshd-telegram-credentials.json")
     else:
         return "/etc/ssh/.sshd-telegram-credentials.json"
+
 
 def main() -> None:
     """Main function where the program start"""
@@ -21,13 +25,13 @@ def main() -> None:
     log.success("Starting the program")
 
     config = Configuration()
-    #config.check_os()
-    config.create_config(args,config_path, platform.system())
+    # config.check_os()
+    config.create_config(args, config_path, platform.system())
 
     message = config.message(args)
- 
+
     requester = Requester()
-    requester.requester(args, config_path,message)
+    requester.requester(args, config_path, message)
     #requester.requester(config_path, message, args, platform.system())
 
     # # Initzialize logger
