@@ -3,6 +3,7 @@ import requests
 from .utils import Utils
 from .logger import Logger
 import platform
+from datetime import date
 
 class Requester():
     """
@@ -26,9 +27,9 @@ class Requester():
         r = requests.post(url=base_url, data=data)
 
         if r.status_code == 200:
-            self.log.success("Message sended")
+            self.log.success(f"Message sended. Date: {date.today()}")
         else:
-            self.log.error("Error sending message")
+            self.log.error(f"Error sending message. Date: {date.today()}")
     
     def requester(self,args,config_path,message):
         """
